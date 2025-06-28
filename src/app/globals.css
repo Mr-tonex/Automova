@@ -1,0 +1,236 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  :root {
+    --background: 210 67% 92%; /* Light Blue: #DDEBF7 */
+    --foreground: 222 47% 11%; /* Dark Blue-Gray */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 222 47% 11%; /* Dark Blue-Gray */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 220 75% 53%; /* Deep Blue: #3066E1 */
+    --primary-foreground: 0 0% 98%; /* White */
+    --secondary: 210 40% 96.1%; /* Lighter blue-gray for secondary elements */
+    --secondary-foreground: 220 75% 53%; /* Deep Blue text on secondary background */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 210 30% 50%; /* Muted gray-blue for less important text */
+    --accent: 190 75% 53%; /* Teal: #30C1E1 */
+    --accent-foreground: 222 47% 11%; /* Dark Blue-Gray for text on accent elements */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 40% 88%; /* Slightly darker than background for borders */
+    --input: 210 40% 88%;
+    --ring: 220 75% 53%; /* Deep blue for focus rings */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+
+    /* Sidebar variables - keeping them as they might be used by shadcn/ui default components if not overridden */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 47% 11%; /* Dark Blue-Gray - Editor-like background */
+    --foreground: 210 40% 98%; /* Light Gray-Blue - Editor-like text */
+    --card: 222 47% 13%; /* Slightly lighter than background for cards */
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 220 75% 53%; /* Deep Blue for primary in dark mode (inspired by editor accents/buttons) */
+    --primary-foreground: 0 0% 98%; /* White text on Deep Blue */
+    --secondary: 210 40% 17.9%; /* Darker blue-gray */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 210 40% 17.9%;
+    --muted-foreground: 210 40% 60%;
+    --accent: 190 75% 53%; /* Teal for accent in dark mode */
+    --accent-foreground: 222 47% 11%; /* Dark Blue-Gray text on Teal */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 40% 22%; /* Slightly lighter than card for borders */
+    --input: 210 40% 17.9%;
+    --ring: 220 75% 53%; /* Deep Blue for rings in dark mode */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+     /* Sidebar variables - dark mode adjustments */
+    --sidebar-background: 222 40% 15%; /* Darker than main background, slightly more blue */
+    --sidebar-foreground: 210 40% 85%; /* Lighter text for sidebar */
+    --sidebar-primary: 220 75% 60%; /* Brighter Deep Blue for sidebar primary */
+    --sidebar-primary-foreground: 0 0% 98%; /* White text on sidebar primary */
+    --sidebar-accent: 222 47% 20%; /* Slightly lighter for sidebar accent */
+    --sidebar-accent-foreground: 210 40% 95%;
+    --sidebar-border: 222 47% 25%;
+    --sidebar-ring: 220 75% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    background-color: transparent;
+    @apply text-foreground;
+    @apply antialiased; /* Ensures text is smooth */
+  }
+  section {
+    @apply w-full py-12 md:py-20 lg:py-28; /* Consistent vertical spacing for sections */
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+  p {
+    @apply leading-relaxed text-muted-foreground;
+  }
+}
+
+@keyframes textScrollUp {
+  from {
+    transform: translateY(1.5em);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .cta-glow {
+    box-shadow: 0 0 15px 2px hsl(var(--primary) / 0.5);
+    transition: box-shadow 0.3s ease-in-out; 
+  }
+
+  .cta-glow:hover {
+    box-shadow: 0 0 25px 5px hsl(var(--primary) / 0.7);
+  }
+
+  .hero-text-scroll-up {
+    display: inline-block; 
+    animation: textScrollUp 2s ease-in-out forwards;
+  }
+}
+
+/* --- Realistic Starry Sky Theme --- */
+#stars-small-layer,
+#stars-medium-layer,
+#stars-large-layer {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: transparent;
+  pointer-events: none;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.2; }
+  25% { opacity: 1; }
+  50% { opacity: 0.2; }
+  75% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+#stars-small-layer {
+  width: 1px;
+  height: 1px;
+  box-shadow: 1886px 1475px #FFF, 1506px 208px #FFF, 97px 1195px #FFF, 1829px 1318px #FFF, 1481px 1868px #FFF, 1898px 1017px #FFF, 1637px 273px #FFF, 248px 115px #FFF, 1289px 1636px #FFF, 966px 1774px #FFF, 203px 93px #FFF, 1858px 1079px #FFF, 1213px 432px #FFF, 33px 387px #FFF, 119px 233px #FFF, 1690px 104px #FFF, 919px 1013px #FFF, 290px 1239px #FFF, 1438px 1545px #FFF, 679px 689px #FFF, 1077px 179px #FFF, 1131px 1019px #FFF, 1146px 1308px #FFF, 149px 103px #FFF, 831px 1233px #FFF, 16px 1019px #FFF, 151px 731px #FFF, 489px 1515px #FFF, 131px 903px #FFF, 991px 1603px #FFF, 1373px 1836px #FFF, 105px 128px #FFF, 93px 804px #FFF, 319px 127px #FFF, 1373px 86px #FFF, 1712px 1459px #FFF, 1479px 1184px #FFF, 1332px 130px #FFF, 1888px 133px #FFF, 198px 1630px #FFF, 219px 1140px #FFF, 1845px 33px #FFF, 1754px 1787px #FFF, 1949px 1739px #FFF, 853px 480px #FFF, 1756px 1007px #FFF, 902px 343px #FFF, 1869px 744px #FFF, 321px 1269px #FFF, 126px 1876px #FFF, 335px 1115px #FFF, 103px 1205px #FFF, 1572px 1635px #FFF, 1793px 1656px #FFF, 1619px 125px #FFF, 1582px 502px #FFF, 1112px 1729px #FFF, 177px 621px #FFF, 1735px 1492px #FFF, 47px 1786px #FFF, 1904px 1109px #FFF, 46px 1197px #FFF, 1844px 131px #FFF, 191px 93px #FFF, 1730px 1056px #FFF, 1148px 129px #FFF, 1875px 1716px #FFF, 88px 1335px #FFF, 58px 1450px #FFF, 1712px 1203px #FFF, 1774px 135px #FFF, 143px 406px #FFF, 1695px 1530px #FFF, 1251px 1978px #FFF, 26px 1603px #FFF, 1610px 1139px #FFF, 1968px 1699px #FFF, 1451px 982px #FFF, 75px 1944px #FFF, 1419px 1932px #FFF, 1195px 552px #FFF, 1970px 1482px #FFF, 104px 1571px #FFF, 196px 1599px #FFF, 199px 1590px #FFF, 111px 131px #FFF, 20px 1475px #FFF, 125px 96px #FFF, 143px 1913px #FFF, 1759px 1320px #FFF, 96px 1928px #FFF, 1851px 1956px #FFF, 183px 1461px #FFF, 124px 100px #FFF, 189px 105px #FFF, 816px 229px #FFF, 719px 584px #FFF, 128px 1547px #FFF, 1755px 769px #FFF, 437px 113px #FFF, 240px 1472px #FFF, 1139px 703px #FFF, 498px 1344px #FFF, 1709px 133px #FFF, 1083px 1990px #FFF, 1100px 324px #FFF, 1916px 1157px #FFF, 129px 1863px #FFF, 321px 1851px #FFF, 1090px 1302px #FFF, 1335px 338px #FFF, 1109px 490px #FFF, 549px 124px #FFF, 401px 182px #FFF, 1021px 1720px #FFF, 2439px 1650px #FFF, 1989px 139px #FFF, 2378px 873px #FFF, 2243px 1541px #FFF, 1819px 1551px #FFF, 149px 1729px #FFF, 2087px 754px #FFF, 2390px 194px #FFF, 1898px 1894px #FFF, 2011px 1221px #FFF, 202px 2110px #FFF, 2420px 1198px #FFF, 1032px 1439px #FFF, 2038px 2097px #FFF, 624px 2221px #FFF;
+  animation: twinkle 30s linear infinite;
+}
+
+#stars-medium-layer {
+  width: 2px;
+  height: 2px;
+  box-shadow: 1988px 116px #FFF, 1381px 1860px #FFF, 1172px 1502px #FFF, 156px 1819px #FFF, 1515px 1118px #FFF, 1017px 1438px #FFF, 321px 1326px #FFF, 122px 1955px #FFF, 1083px 1146px #FFF, 1973px 1111px #FFF, 1999px 1619px #FFF, 52px 1640px #FFF, 165px 1385px #FFF, 1095px 94px #FFF, 1546px 63px #FFF, 1583px 1276px #FFF, 1772px 1779px #FFF, 1612px 1319px #FFF, 1814px 1121px #FFF, 183px 1276px #FFF, 124px 135px #FFF, 110px 1800px #FFF, 1940px 1469px #FFF, 1729px 1533px #FFF, 179px 158px #FFF, 112px 199px #FFF, 1625px 1612px #FFF, 1955px 1493px #FFF, 98px 165px #FFF, 1902px 1616px #FFF, 187px 182px #FFF, 1726px 1693px #FFF, 1808px 1076px #FFF, 111px 118px #FFF, 1382px 1905px #FFF, 102px 174px #FFF, 149px 150px #FFF, 120px 115px #FFF, 194px 195px #FFF, 168px 148px #FFF, 171px 166px #FFF, 137px 143px #FFF, 946px 1812px #FFF, 235px 28px #FFF, 186px 871px #FFF, 831px 1869px #FFF, 1475px 1342px #FFF, 1373px 229px #FFF, 1669px 746px #FFF, 1435px 544px #FFF, 219px 1735px #FFF, 104px 502px #FFF, 477px 1891px #FFF, 1681px 1437px #FFF, 2405px 902px #FFF, 1935px 2333px #FFF, 2321px 1029px #FFF, 1222px 134px #FFF, 22px 2444px #FFF, 1432px 1432px #FFF;
+  animation: twinkle 20s linear infinite;
+}
+
+#stars-large-layer {
+  width: 3px;
+  height: 3px;
+  box-shadow: 1963px 1896px #FFF, 1321px 1419px #FFF, 122px 134px #FFF, 139px 142px #FFF, 129px 185px #FFF, 1202px 1629px #FFF, 184px 147px #FFF, 1720px 1133px #FFF, 115px 124px #FFF, 112px 154px #FFF, 188px 132px #FFF, 164px 169px #FFF, 2301px 482px #FFF, 381px 2221px #FFF, 1421px 2341px #FFF, 21px 2029px #FFF, 1821px 1821px #FFF, 1928px 231px #FFF;
+}
+
+/* Diagonal downward shooting stars animation */
+@keyframes shoot-across-down {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(150vw, 120vh); /* Move diagonally down and right */
+    opacity: 0;
+  }
+}
+
+.shooting-star {
+  position: absolute;
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(-45deg, #fff, rgba(255, 255, 255, 0));
+  border-radius: 999px;
+  filter: drop-shadow(0 0 6px #fff);
+  animation: shoot-across-down 15s linear infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* These selectors target the 3 shooting star divs which are the 5th, 6th, and 7th children of their container */
+.shooting-star:nth-child(5) {
+  top: 10%;
+  left: -20%;
+  animation-delay: 0s;
+}
+.shooting-star:nth-child(6) {
+  top: 40%;
+  left: -50%;
+  animation-delay: 6s;
+  animation-duration: 12s; /* a bit of variation */
+}
+.shooting-star:nth-child(7) {
+  top: -10%;
+  left: 60%;
+  animation-delay: 13s;
+  animation-duration: 18s; /* a bit of variation */
+}
