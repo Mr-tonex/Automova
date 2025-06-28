@@ -1,5 +1,10 @@
-# Firebase Studio
+# 🚘 Automova — Smart Automotive Solutions
 
-This is a NextJS starter in Firebase Studio.
+**Automova** is a cutting-edge landing page for a next-gen automotive AI startup.  
+Built using **Next.js** and deployed via **Vercel**, this project is scaffolded via Firebase Studio and designed for speed, clarity, and conversion.
 
-To get started, take a look at src/app/page.tsx.
+---
+
+## 📁 Project Structure
+
+
