@@ -46,6 +46,21 @@ const InternalPromptInputSchema = z.object({
 });
 
 export async function autoMovaSupport(input: AutoMovaSupportInput): Promise<AutoMovaSupportOutput> {
+  if (!process.env.GOOGLE_API_KEY && !process.env.GOOGLE_GENAI_API_KEY) {
+    const errorMessage = "The AI assistant is currently unavailable due to a configuration issue. The site administrator has been notified.";
+    console.error("--------------------------------------------------------------------");
+    console.error("CRITICAL ERROR: AI Chatbot functionality is disabled.");
+    console.error("Neither GOOGLE_API_KEY nor GOOGLE_GENAI_API_KEY is set in the environment variables.");
+    console.error("To fix this for your deployed site:");
+    console.error("1. Go to your project settings in the Google Cloud console.");
+    console.error("2. Find the Secret Manager for your App Hosting backend.");
+    console.error("3. Add a new secret with the name 'GOOGLE_API_KEY' and your key as the value.");
+    console.error("4. Ensure your App Hosting backend has permission to access this secret.");
+    console.error("--------------------------------------------------------------------");
+    return {
+      reply: errorMessage,
+    };
+  }
   return autoMovaSupportFlow(input);
 }
 
