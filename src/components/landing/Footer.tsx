@@ -7,7 +7,7 @@ const socialLinks = [
   { href: 'https://www.linkedin.com/in/auto-mova-7b6799368', label: 'LinkedIn', icon: <Linkedin className="h-5 w-5" /> },
   { href: 'https://www.instagram.com/auto.mova/', label: 'Instagram', icon: <Instagram className="h-5 w-5" /> },
   { href: 'https://x.com/auto_mova', label: 'Twitter', icon: <Twitter className="h-5 w-5" /> },
-  { href: '#', label: 'Facebook', icon: <Facebook className="h-5 w-5" /> },
+  { href: 'https://www.facebook.com/share/1A7r5heSHy/?mibextid=wwXIfr', label: 'Facebook', icon: <Facebook className="h-5 w-5" /> },
 ];
 
 const navLinks = [
